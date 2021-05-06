@@ -11,7 +11,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.socket = io('localhost:8000');
+    this.socket = io('ws://localhost:8000', { transports: ["websocket"] });
     this.socket.on('updateData', data => this.updateTasks(data));
     this.socket.on('removeTasks', id => this.removeTask(id));
     this.socket.on('addTask', task => this.addTask(task));
